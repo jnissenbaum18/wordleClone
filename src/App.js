@@ -13,6 +13,8 @@ import "./App.css";
 const numGuesses = 6;
 const numLetters = 5;
 const todaysWordIndex = 1812;
+const min = 0;
+const max = 2315;
 
 class App extends Component {
   constructor(props) {
@@ -115,17 +117,34 @@ class App extends Component {
       currentLetterNumber: 0
     })
   }
-  handleReset = () => {
+  handleReset = (wordIndex) => {
     const newGuessArray = createEmptyGuessesArray(numGuesses, numLetters);
+    let newWordIndex = todaysWordIndex;
+    if (wordIndex && typeof(wordIndex) === "number") {
+      newWordIndex = wordIndex
+    }
     this.setState({
       guesses: newGuessArray,
       currentGuessNumber: 0,
       currentLetterNumber: 0,
-      todaysWordIndex,
+      todaysWordIndex: newWordIndex,
       gameStatusText: "",
       gameState: "playing",
     });
   };
+  handleRandomize = () => {
+    const randomIndex = Math.floor(Math.random() * (max - min + 1) + min)
+    this.handleReset(randomIndex)
+  }
+  handleGiveUp = () => {
+    const { todaysWordIndex } = this.state;
+    this.setState({
+      gameState: "lost",
+      gameStatusText: `Game Over. The word was: ${acceptableGuesses[
+        todaysWordIndex
+      ].toUpperCase()}`,
+    });
+  }
   checkIsGameOver = () => {
     const { guesses, currentGuessNumber, todaysWordIndex } = this.state;
     console.log("check is game over")
@@ -148,21 +167,24 @@ class App extends Component {
         gameState: "lost",
         gameStatusText: `Game Over. The word was: ${acceptableGuesses[
           todaysWordIndex
-        ].toUpperCase()}.`,
+        ].toUpperCase()}`,
       });
       return;
     }
   };
   render() {
-    const { guesses, gameState, gameStatusText } = this.state;
+    const { guesses, gameState, gameStatusText, todaysWordIndex } = this.state;
     return (
       <div className="App" onKeyDown={this.handleKeyPress} tabIndex="0">
         <header className="App-header">
           <h2>Wordle Clone</h2>
           <div className="App-buttons">
             <button onClick={this.handleSubmit}>Enter</button>
+            <button onClick={this.handleGiveUp}>Give Up</button>
             <button onClick={this.handleReset}>Reset</button>
+            <button onClick={this.handleRandomize}>Randomize</button>
           </div>
+          <h3 className={`game-info`}>Playing Word: {todaysWordIndex}</h3>
           <h3 className={`game-status-${gameState}`}>{gameStatusText}</h3>
           {guesses.map(({ guessLetters, guessNumber }, rowIdx) => {
             return (

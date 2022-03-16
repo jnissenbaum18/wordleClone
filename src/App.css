@@ -39,7 +39,7 @@
 }
 
 .App-buttons {
-  width: 10%;
+  width: 25%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -59,4 +59,8 @@
 
 .game-status-lost {
   color: red
+}
+
+.game-info {
+  color: white;
 }
