@@ -1,0 +1,21 @@
+.letter-square-container {
+    border: solid 1px red;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter-correct {
+    color: green
+}
+
+.letter-partial{
+    color: yellow
+}
+
+.letter-incorrect{
+    color: red
+}

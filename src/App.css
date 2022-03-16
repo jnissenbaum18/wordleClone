@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding-bottom: 50px;
 }
 
 .App-link {
@@ -35,4 +36,27 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-buttons {
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.word-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30%;
+  margin-bottom: 10px;
+}
+
+.game-status-won {
+  color: green
+}
+
+.game-status-lost {
+  color: red
 }
