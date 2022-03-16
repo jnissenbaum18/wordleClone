@@ -1,21 +1,23 @@
 .letter-square-container {
-    border: solid 1px red;
+    border: solid 1px white;
+    color: white;
     height: 50px;
     width: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-weight: 700;
+    font-size: x-large;
 }
 
 .letter-correct {
-    color: green
+    background-color: darkgreen
 }
 
 .letter-partial{
-    color: yellow
+    background-color: goldenrod
 }
 
 .letter-incorrect{
-    color: red
 }

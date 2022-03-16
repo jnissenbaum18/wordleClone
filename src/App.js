@@ -159,6 +159,10 @@ class App extends Component {
       <div className="App" onKeyDown={this.handleKeyPress} tabIndex="0">
         <header className="App-header">
           <h2>Wordle Clone</h2>
+          <div className="App-buttons">
+            <button onClick={this.handleSubmit}>Enter</button>
+            <button onClick={this.handleReset}>Reset</button>
+          </div>
           <h3 className={`game-status-${gameState}`}>{gameStatusText}</h3>
           {guesses.map(({ guessLetters, guessNumber }, rowIdx) => {
             return (
@@ -175,10 +179,7 @@ class App extends Component {
               </div>
             );
           })}
-          <div className="App-buttons">
-            <button onClick={this.handleSubmit}>Enter</button>
-            <button onClick={this.handleReset}>Reset</button>
-          </div>
+          
         </header>
       </div>
     );
