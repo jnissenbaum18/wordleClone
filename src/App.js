@@ -7,14 +7,14 @@ import {
   evaluateCurrentGuess,
   createEmptyGuessesArray,
 } from "./Utils/gameUtils";
-import acceptableGuesses from "./Utils/wordList";
+import {guessList} from "./Utils/wordList";
 import "./App.css";
 
 const numGuesses = 6;
 const numLetters = 5;
 const todaysWordIndex = 1812;
 const min = 0;
-const max = 2315;
+const max = 12971;
 
 class App extends Component {
   constructor(props) {
@@ -140,7 +140,7 @@ class App extends Component {
     const { todaysWordIndex } = this.state;
     this.setState({
       gameState: "lost",
-      gameStatusText: `Game Over. The word was: ${acceptableGuesses[
+      gameStatusText: `Game Over. The word was: ${guessList[
         todaysWordIndex
       ].toUpperCase()}`,
     });
@@ -165,7 +165,7 @@ class App extends Component {
       console.log("Game over");
       this.setState({
         gameState: "lost",
-        gameStatusText: `Game Over. The word was: ${acceptableGuesses[
+        gameStatusText: `Game Over. The word was: ${guessList[
           todaysWordIndex
         ].toUpperCase()}`,
       });

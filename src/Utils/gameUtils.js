@@ -1,4 +1,4 @@
-import acceptableGuesses from "./wordList";
+import {guessList, acceptableGuesses} from "./wordList";
 
 export const createLetterGuess = (letter, hasGuessed, status) => {
   if (status !== undefined) {
@@ -53,7 +53,8 @@ export const validateCurrentGuess = (
     .map(({ letter }) => letter)
     .join("")
     .toLowerCase();
-  if (!acceptableGuesses.includes(currentGuessWord)) {
+    console.log(acceptableGuesses.includes("anode"))
+  if (!guessList.includes(currentGuessWord) && !acceptableGuesses.includes(currentGuessWord)) {
     return false;
   }
   return true;
